@@ -34,7 +34,7 @@ export default function HistoryPage() {
               <div className="p-2 bg-primary/10 rounded-lg">
                 <FileText className="w-6 h-6 text-primary" />
               </div>
-              <h1 className="text-3xl font-bold tracking-tight">Scan History</h1>
+              <h1 className="text-3xl font-bold tracking-tight">Scan Historys</h1>
             </div>
             <p className="text-muted-foreground text-lg">
               View and manage your previous URL scans
