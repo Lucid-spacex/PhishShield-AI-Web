@@ -1,6 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://phishshield-ai-pari.onrender.com';
+const API_URL = 'https://phishshield-ai-pari.onrender.com';
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
