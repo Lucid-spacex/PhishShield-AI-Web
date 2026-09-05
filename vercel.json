@@ -5,7 +5,7 @@
   "framework": "nextjs",
   "regions": ["iad1"],
   "env": {
-     "NEXT_PUBLIC_API_URL": "https://phishshield-ai-pari.onrender.com"
+    "NEXT_PUBLIC_API_URL": "https://phishshield-ai-pari.onrender.com"
   },
   "headers": [
     {
