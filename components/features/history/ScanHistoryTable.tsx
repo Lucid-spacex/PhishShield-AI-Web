@@ -44,12 +44,11 @@ export const ScanHistoryTable: React.FC<ScanHistoryTableProps> = ({
   
   const getLabelVariant = (label: string) => {
     switch (label) {
+      case 'legitimate':
       case 'safe':
         return 'success';
       case 'phishing':
         return 'danger';
-      case 'suspicious':
-        return 'warning';
       default:
         return 'neutral';
     }
@@ -57,12 +56,11 @@ export const ScanHistoryTable: React.FC<ScanHistoryTableProps> = ({
   
   const getLabelIcon = (label: string) => {
     switch (label) {
+      case 'legitimate':
       case 'safe':
         return ShieldCheck;
       case 'phishing':
         return ShieldAlert;
-      case 'suspicious':
-        return AlertTriangle;
       default:
         return HelpCircle;
     }
@@ -159,7 +157,7 @@ export const ScanHistoryTable: React.FC<ScanHistoryTableProps> = ({
                         <div className="w-16 bg-muted rounded-full h-2 overflow-hidden">
                           <div
                             className={`h-full ${
-                              scan.label === 'safe'
+                              scan.label === 'legitimate' || scan.label === 'safe'
                                 ? 'bg-success'
                                 : scan.label === 'phishing'
                                 ? 'bg-danger'

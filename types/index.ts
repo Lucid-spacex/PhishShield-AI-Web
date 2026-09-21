@@ -31,20 +31,20 @@ export interface ScanRequest {
 }
 
 export interface ScanResult {
-  scan_id: string;
-  label: 'safe' | 'phishing' | 'suspicious';
+  scan_id: number;
+  label: 'legitimate' | 'phishing' | 'safe' | 'suspicious';
   confidence_score: number;
   risk_indicators: string[];
   scan_time: string;
   url: string;
+  user_id?: number;
 }
 
 export interface ScanHistoryResponse {
   scans: ScanResult[];
   total: number;
-  page: number;
-  per_page: number;
-  total_pages: number;
+  pages: number;
+  current_page: number;
 }
 
 export interface ScanHistoryParams {

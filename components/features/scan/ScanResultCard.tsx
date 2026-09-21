@@ -24,13 +24,14 @@ export const ScanResultCard: React.FC<ScanResultCardProps> = ({ result }) => {
   const getLabelInfo = (label: string) => {
     switch (label) {
       case 'safe':
+      case 'legitimate':
         return {
           icon: ShieldCheck,
           text: 'Safe',
           variant: 'success' as const,
           description: 'This URL appears to be legitimate',
-          bgColor: 'bg-success-light',
-          textColor: 'text-success-text',
+          bgColor: 'bg-green-50',
+          textColor: 'text-green-600',
         };
       case 'phishing':
         return {
@@ -38,8 +39,8 @@ export const ScanResultCard: React.FC<ScanResultCardProps> = ({ result }) => {
           text: 'Phishing Detected',
           variant: 'danger' as const,
           description: 'High risk phishing detected',
-          bgColor: 'bg-danger-light',
-          textColor: 'text-danger-text',
+          bgColor: 'bg-red-50',
+          textColor: 'text-red-600',
         };
       case 'suspicious':
         return {
@@ -47,8 +48,8 @@ export const ScanResultCard: React.FC<ScanResultCardProps> = ({ result }) => {
           text: 'Suspicious',
           variant: 'warning' as const,
           description: 'Proceed with caution',
-          bgColor: 'bg-warning-light',
-          textColor: 'text-warning-text',
+          bgColor: 'bg-yellow-50',
+          textColor: 'text-yellow-600',
         };
       default:
         return {
@@ -119,7 +120,7 @@ export const ScanResultCard: React.FC<ScanResultCardProps> = ({ result }) => {
             <div className="flex items-center justify-between text-sm">
               <span className="font-medium text-foreground">Risk Level</span>
               <span className={`font-bold ${labelInfo.textColor}`}>
-                {result.label === 'safe' ? 'Low' : result.label === 'phishing' ? 'High' : 'Medium'}
+                {result.label === 'safe' || result.label === 'legitimate' ? 'Low' : result.label === 'phishing' ? 'High' : 'Medium'}
               </span>
             </div>
             <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
@@ -128,11 +129,11 @@ export const ScanResultCard: React.FC<ScanResultCardProps> = ({ result }) => {
                 animate={{ width: `${confidencePercentage}%` }}
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className={`h-full rounded-full ${
-                  result.label === 'safe'
-                    ? 'bg-success'
+                  result.label === 'safe' || result.label === 'legitimate'
+                    ? 'bg-green-500'
                     : result.label === 'phishing'
-                    ? 'bg-danger'
-                    : 'bg-warning'
+                    ? 'bg-red-500'
+                    : 'bg-yellow-500'
                 }`}
               />
             </div>

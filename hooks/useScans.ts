@@ -33,10 +33,10 @@ export const useScanHistory = (params: ScanHistoryParams = {}) => {
   return useQuery({
     queryKey: ['scanHistory', page, per_page],
     queryFn: () => scansApi.getScanHistory({ page, per_page }),
-    staleTime: 5 * 60 * 1000, // 5 minutes - increased for better caching
+    staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes garbage collection
-    refetchOnWindowFocus: false, // Prevent unnecessary refetches
-    refetchOnMount: false, // Don't refetch on mount if data is fresh
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 };
 

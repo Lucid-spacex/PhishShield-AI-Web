@@ -64,7 +64,7 @@ export default function HistoryPage() {
               isLoading={isLoading || isFetching}
               onPageChange={handlePageChange}
               currentPage={page}
-              totalPages={data?.total_pages || 1}
+              totalPages={data?.pages || 1}
             />
           )}
         </main>
