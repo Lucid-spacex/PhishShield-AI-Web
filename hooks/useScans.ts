@@ -40,10 +40,10 @@ export const useScanHistory = (params: ScanHistoryParams = {}) => {
   });
 };
 
-export const useScanById = (scanId: string) => {
+export const useScanById = (scanId: number) => {
   return useQuery({
     queryKey: ['scan', scanId],
-    queryFn: () => scansApi.getScanById(scanId),
+    queryFn: () => scansApi.getScanById(scanId.toString()),
     enabled: !!scanId,
     staleTime: 10 * 60 * 1000, // 10 minutes
   });
@@ -54,8 +54,8 @@ export const useDeleteScan = () => {
   const { addToast } = useToast();
 
   return useMutation({
-    mutationFn: async (scanId: string) => {
-      await scansApi.deleteScan(scanId);
+    mutationFn: async (scanId: number) => {
+      await scansApi.deleteScan(scanId.toString());
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['scanHistory'] });

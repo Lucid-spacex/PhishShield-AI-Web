@@ -12,13 +12,13 @@ import { Skeleton } from '@/components/ui/Skeleton';
 export default function ScanDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const scanId = params.scanId as string;
+  const scanId = parseInt(params.scanId as string);
   
   const { data: scan, isLoading, error } = useScanById(scanId);
   
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
         <Navbar />
         <main className="container mx-auto px-4 py-8">
           <div className="mb-6">
@@ -29,11 +29,11 @@ export default function ScanDetailPage() {
             >
               ← Back to History
             </Button>
-            <h1 className="text-3xl font-bold text-gray-900">Scan Details</h1>
+            <h1 className="text-3xl font-bold text-foreground">Scan Details</h1>
           </div>
           
           {isLoading && (
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div className="bg-card rounded-lg shadow-sm border border-border p-6">
               <Skeleton variant="text" width="100%" height={32} className="mb-4" />
               <Skeleton variant="text" width="60%" height={24} className="mb-4" />
               <Skeleton variant="rectangular" width="100%" height={200} />
@@ -41,7 +41,7 @@ export default function ScanDetailPage() {
           )}
           
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+            <div className="bg-danger-light border border-danger text-danger px-4 py-3 rounded-lg">
               Failed to load scan details. The scan may have been deleted or doesn't exist.
             </div>
           )}
